@@ -1,9 +1,8 @@
 import sequelize from '../utils/database'
 import { DataTypes } from 'sequelize'
 import { ISuperPowers } from '../interfaces/superpower.interface'
-import Mutants from './Mutants'
 
-const SuperPowers = sequelize.define<ISuperPowers>('SuperPowers', {
+export const SuperPowers = sequelize.define<ISuperPowers>('SuperPowers', {
   id: {
     primaryKey: true,
     allowNull: false,
@@ -15,7 +14,3 @@ const SuperPowers = sequelize.define<ISuperPowers>('SuperPowers', {
     allowNull: false
   }
 })
-
-SuperPowers.belongsToMany(Mutants, { through: 'MutantsSuperPowers', onDelete: 'CASCADE' })
-
-export default SuperPowers

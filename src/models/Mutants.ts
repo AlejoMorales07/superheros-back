@@ -1,10 +1,10 @@
 import { DataTypes } from 'sequelize'
 import { IMutants } from '../interfaces/mutants.interface'
 import sequelize from '../utils/database'
-import SuperPowers from './SuperPowers'
-import Vehicles from './Vehicles'
+import { SuperPowers } from './SuperPowers'
+import { Vehicles } from './Vehicles'
 
-const Mutants = sequelize.define<IMutants>('Mutants', {
+export const Mutants = sequelize.define<IMutants>('Mutants', {
   id: {
     primaryKey: true,
     allowNull: false,
@@ -29,7 +29,7 @@ const Mutants = sequelize.define<IMutants>('Mutants', {
   }
 })
 
+Vehicles.hasMany(Mutants)
+SuperPowers.belongsToMany(Mutants, { through: 'MutantsSuperPowers', onDelete: 'CASCADE' })
 Mutants.belongsTo(Vehicles, { onDelete: 'CASCADE' })
 Mutants.belongsToMany(SuperPowers, { through: 'MutantsSuperPowers', onDelete: 'CASCADE' })
-export default Mutants
-//Mutants.has
