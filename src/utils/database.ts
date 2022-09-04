@@ -3,7 +3,8 @@ import { database, password, user, host } from '../config'
 
 const sequelize = new Sequelize(database, user, password, {
   host,
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false
 })
 
 export default sequelize
