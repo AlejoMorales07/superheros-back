@@ -1,6 +1,6 @@
 import app from './app'
+import { port } from './config'
 import sequelize from './utils/database'
-import { port, database } from './config'
 
 async function main() {
   try {

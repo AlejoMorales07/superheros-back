@@ -1,8 +1,9 @@
 import { DataTypes } from 'sequelize'
 import { IVehicles } from '../interfaces/vehicles.interface'
 import sequelize from '../utils/database'
+import Mutants from './Mutants'
 
-const Vehicles = sequelize.define<IVehicles>('SuperPowers', {
+const Vehicles = sequelize.define<IVehicles>('Vehicles', {
   id: {
     primaryKey: true,
     allowNull: false,
@@ -18,5 +19,7 @@ const Vehicles = sequelize.define<IVehicles>('SuperPowers', {
     allowNull: false
   }
 })
+
+Vehicles.hasMany(Mutants)
 
 export default Vehicles
